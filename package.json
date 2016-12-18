@@ -1,0 +1,34 @@
+{
+  "name": "mochacourse",
+  "version": "1.0.0",
+  "description": "Mocha learning course",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oigen90/mochacourse.git"
+  },
+  "keywords": [
+    "mocha",
+    "chai",
+    "sinon",
+    "unit-testing",
+    "bdd",
+    "javascript"
+  ],
+  "author": "oigen90@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oigen90/mochacourse/issues"
+  },
+  "homepage": "https://github.com/oigen90/mochacourse#readme",
+  "devDependencies": {
+    "express": "^4.14.0"
+  }
+}
