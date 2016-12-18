@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "test",
+    "test": "mocha -R list -b",
     "start": "node server.js"
   },
   "repository": {
