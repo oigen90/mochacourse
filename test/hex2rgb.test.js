@@ -3,12 +3,13 @@
  */
 var expect = require('chai').expect;
 var hex2rgb = require('../lib/hex2rgb');
+var sinon = require('sinon');
 
-describe('hex2rgb', function () {
+describe.only('hex2rgb', function () {
 
     it('should return an error if the value is not a hex code', function (done) {
         
-        hex2rgb('blue', function (error, result) {
+        hex2rgb.convert('blue', function (error, result) {
             expect(error).to.exist;
 
             done();
@@ -18,7 +19,7 @@ describe('hex2rgb', function () {
 
     it('should return a correctly converted RGB value', function (done) {
 
-        hex2rgb('#fff', function (error, result) {
+        hex2rgb.convert('#fff', function (error, result) {
 
             expect(error).to.not.exist;
             expect(result).to.deep.equal([255, 255, 255]);
