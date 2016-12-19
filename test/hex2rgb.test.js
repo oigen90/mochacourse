@@ -7,26 +7,44 @@ var sinon = require('sinon');
 
 describe.only('hex2rgb', function () {
 
-    it('should return an error if the value is not a hex code', function (done) {
+    describe('convert method', function () {
         
-        hex2rgb.convert('blue', function (error, result) {
-            expect(error).to.exist;
+        it('should call parse once', function (done) {
 
-            done();
+            sinon.spy(hex2rgb, 'parse');
+
+            hex2rgb.convert('#ffffff', function (err, result) {
+                expect(hex2rgb.parse.calledOnce).to.be.true;
+                expect(hex2rgb.parse.args[0][0]).to.have.length(6);
+
+                hex2rgb.parse.restore();
+                done();
+            });
+
+        });
+
+        it('should return an error if the value is not a hex code', function (done) {
+
+            hex2rgb.convert('blue', function (error, result) {
+                expect(error).to.exist;
+
+                done();
+            });
+
+        });
+
+        it('should return a correctly converted RGB value', function (done) {
+
+            hex2rgb.convert('#fff', function (error, result) {
+
+                expect(error).to.not.exist;
+                expect(result).to.deep.equal([255, 255, 255]);
+
+                done();
+            });
+
         });
 
     });
-
-    it('should return a correctly converted RGB value', function (done) {
-
-        hex2rgb.convert('#fff', function (error, result) {
-
-            expect(error).to.not.exist;
-            expect(result).to.deep.equal([255, 255, 255]);
-
-            done();
-        });
-        
-    });
-
+    
 });
